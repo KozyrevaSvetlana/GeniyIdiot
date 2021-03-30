@@ -9,6 +9,11 @@ namespace GeniyIdiotConsoleApp
         {
             Console.WriteLine("Введите Ваше имя");
             string userInput = Console.ReadLine();
+            while (!User.IsValid(userInput))
+            {
+                Console.WriteLine("Введите Ваше имя. Можно использовать только буквы и цифры");
+                userInput = Console.ReadLine();
+            }
             var user = new User(userInput);
             var questions = QuestionsStoreage.Get();
             var countQuestions = questions.Count;
@@ -68,3 +73,5 @@ namespace GeniyIdiotConsoleApp
 
     }
 }
+
+//3 занятие вебинар прошла. Начинать с 4 занятия
