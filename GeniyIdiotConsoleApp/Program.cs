@@ -9,8 +9,6 @@ namespace GeniyIdiotConsoleApp
         {
             Console.WriteLine("Введите Ваше имя");
             string userInput = Console.ReadLine();
-
-
             var user = new User(userInput);
             var questions = GetQuestions();
             var countQuestions = questions.Count;
@@ -18,13 +16,10 @@ namespace GeniyIdiotConsoleApp
             var random = new Random();
             for (int i = 0; i < countQuestions; i++)
             {
-                int randomQuestionIndex = random.Next(0, countQuestions);
+                int randomQuestionIndex = random.Next(0, questions.Count);
                 Console.WriteLine($"Вопрос №{i + 1}.");
                 Console.WriteLine(questions[randomQuestionIndex]);
                 int userAnswer = GetUserAnswer();
-
-
-
                 int rightAnswer = answers[randomQuestionIndex];
                 if (userAnswer == rightAnswer)
                 {
@@ -36,7 +31,23 @@ namespace GeniyIdiotConsoleApp
             CalculateDiagnose(user, countQuestions);
             Console.WriteLine($"Количество правильных ответов: {user.CounRightAnswers}");
             Console.WriteLine($"Ваш диагноз: {user.Diagnose}");
-
+            UserResultsStoreage.Append(user);
+            Console.WriteLine("Хотите посмотреть предыдущие результаты?Введите да или нет");
+            var input = Console.ReadLine().ToLower().Trim();
+            Console.WriteLine();
+            if (input=="да"|| input == "lf")
+            {
+                var users = UserResultsStoreage.GetAll();
+                ViewStatistics(users);
+            }
+        }
+        private static void ViewStatistics(List<User> users)
+        {
+            Console.WriteLine("{0,-30}{1,-40}{2,-30}", "Имя","Кол-во правильных ответов","Диагноз" );
+            foreach (var user in users)
+            {
+                Console.WriteLine("{0,-30}{1,-40}{2,-30}", user.Name, user.CounRightAnswers, user.Diagnose);
+            }
         }
         private static List<string> GetQuestions()
         {
@@ -94,28 +105,34 @@ namespace GeniyIdiotConsoleApp
             if (percentRightAnswers == 0)
             {
                 user.Diagnose = diagnoses[0];
+                return;
             }
             if (percentRightAnswers <= 20)
             {
                 user.Diagnose = diagnoses[1];
+                return;
             }
             if (percentRightAnswers <= 40)
             {
                 user.Diagnose = diagnoses[2];
+                return;
             }
             if (percentRightAnswers <= 60)
             {
                 user.Diagnose = diagnoses[3];
+                return;
             }
             if (percentRightAnswers <= 80)
             {
                 user.Diagnose = diagnoses[4];
+                return;
             }
             if (percentRightAnswers <= 100)
             {
                 user.Diagnose = diagnoses[5];
+                return;
             }
+            return;
         }
-
     }
 }
