@@ -12,21 +12,19 @@ namespace GeniyIdiotConsoleApp
             var user = new User(userInput);
             var questions = GetQuestions();
             var countQuestions = questions.Count;
-            var answers = GetAnswers();
             var random = new Random();
             for (int i = 0; i < countQuestions; i++)
             {
                 int randomQuestionIndex = random.Next(0, questions.Count);
                 Console.WriteLine($"Вопрос №{i + 1}.");
-                Console.WriteLine(questions[randomQuestionIndex]);
+                Console.WriteLine(questions[randomQuestionIndex].Text);
                 int userAnswer = GetUserAnswer();
-                int rightAnswer = answers[randomQuestionIndex];
+                int rightAnswer = questions[randomQuestionIndex].Answer;
                 if (userAnswer == rightAnswer)
                 {
                     user.AcceptRightAnswer();
                 }
                 questions.RemoveAt(randomQuestionIndex);
-                answers.RemoveAt(randomQuestionIndex);
             }
             CalculateDiagnose(user, countQuestions);
             Console.WriteLine($"Количество правильных ответов: {user.CounRightAnswers}");
@@ -49,25 +47,15 @@ namespace GeniyIdiotConsoleApp
                 Console.WriteLine("{0,-30}{1,-40}{2,-30}", user.Name, user.CounRightAnswers, user.Diagnose);
             }
         }
-        private static List<string> GetQuestions()
+        private static List<Question> GetQuestions()
         {
-            var questions = new List<string>();
-            questions.Add("Сколько будет два плюс два умноженное на два?");
-            questions.Add("Бревно нужно распилить на 10 частей, сколько надо сделать распилов?");
-            questions.Add("На двух руках 10 пальцев. Сколько пальцев на 5 руках?");
-            questions.Add("Укол делают каждые полчаса, сколько нужно минут для трех уколов?");
-            questions.Add("Пять свечей горело, две потухли. Сколько свечей осталось?");
+            var questions = new List<Question>();
+            questions.Add(new Question("Сколько будет два плюс два умноженное на два?",6));
+            questions.Add(new Question("Бревно нужно распилить на 10 частей, сколько надо сделать распилов?",9));
+            questions.Add(new Question("На двух руках 10 пальцев. Сколько пальцев на 5 руках?",25));
+            questions.Add(new Question("Укол делают каждые полчаса, сколько нужно минут для трех уколов?",60));
+            questions.Add(new Question("Пять свечей горело, две потухли. Сколько свечей осталось?",2));
             return questions;
-        }
-        private static List<int> GetAnswers()
-        {
-            var answers = new List<int>();
-            answers.Add(6);
-            answers.Add(9);
-            answers.Add(25);
-            answers.Add(60);
-            answers.Add(2);
-            return answers;
         }
         private static int GetUserAnswer()
         {
