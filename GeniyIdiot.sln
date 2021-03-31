@@ -5,6 +5,8 @@ VisualStudioVersion = 15.0.28307.1433
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GeniyIdiotConsoleApp", "GeniyIdiotConsoleApp\GeniyIdiotConsoleApp.csproj", "{A67A83F2-0462-45A5-966C-85154F1F64F5}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GeniyIdiotFormsApp", "GeniyIdiotFormsApp\GeniyIdiotFormsApp.csproj", "{7327ABB1-9682-4C22-8B9C-C58DC9768F27}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{A67A83F2-0462-45A5-966C-85154F1F64F5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A67A83F2-0462-45A5-966C-85154F1F64F5}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A67A83F2-0462-45A5-966C-85154F1F64F5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7327ABB1-9682-4C22-8B9C-C58DC9768F27}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7327ABB1-9682-4C22-8B9C-C58DC9768F27}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7327ABB1-9682-4C22-8B9C-C58DC9768F27}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7327ABB1-9682-4C22-8B9C-C58DC9768F27}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

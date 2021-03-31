@@ -73,5 +73,3 @@ namespace GeniyIdiotConsoleApp
 
     }
 }
-
-//3 занятие вебинар прошла. Начинать с 4 занятия
