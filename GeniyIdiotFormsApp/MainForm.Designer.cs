@@ -1,6 +1,6 @@
 ﻿namespace GeniyIdiotFormsApp
 {
-    partial class Form1
+    partial class MainForm
     {
         /// <summary>
         /// Required designer variable.
@@ -37,18 +37,20 @@
             // quetionNumberLabel
             // 
             this.quetionNumberLabel.AutoSize = true;
+            this.quetionNumberLabel.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.quetionNumberLabel.Location = new System.Drawing.Point(13, 13);
             this.quetionNumberLabel.Name = "quetionNumberLabel";
-            this.quetionNumberLabel.Size = new System.Drawing.Size(58, 13);
+            this.quetionNumberLabel.Size = new System.Drawing.Size(78, 19);
             this.quetionNumberLabel.TabIndex = 0;
             this.quetionNumberLabel.Text = "Вопрос №";
             // 
             // quetionTextLabel
             // 
             this.quetionTextLabel.AutoSize = true;
+            this.quetionTextLabel.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.quetionTextLabel.Location = new System.Drawing.Point(16, 48);
             this.quetionTextLabel.Name = "quetionTextLabel";
-            this.quetionTextLabel.Size = new System.Drawing.Size(80, 13);
+            this.quetionTextLabel.Size = new System.Drawing.Size(103, 19);
             this.quetionTextLabel.TabIndex = 1;
             this.quetionTextLabel.Text = "текст вопроса";
             // 
@@ -56,29 +58,32 @@
             // 
             this.userAnswerTextBox.Location = new System.Drawing.Point(19, 85);
             this.userAnswerTextBox.Name = "userAnswerTextBox";
-            this.userAnswerTextBox.Size = new System.Drawing.Size(447, 20);
+            this.userAnswerTextBox.Size = new System.Drawing.Size(658, 20);
             this.userAnswerTextBox.TabIndex = 2;
             // 
             // nextButton
             // 
             this.nextButton.Location = new System.Drawing.Point(19, 111);
             this.nextButton.Name = "nextButton";
-            this.nextButton.Size = new System.Drawing.Size(447, 45);
+            this.nextButton.Size = new System.Drawing.Size(658, 45);
             this.nextButton.TabIndex = 3;
             this.nextButton.Text = "Далее";
             this.nextButton.UseVisualStyleBackColor = true;
+            this.nextButton.Click += new System.EventHandler(this.nextButton_Click);
             // 
-            // Form1
+            // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(478, 168);
+            this.ClientSize = new System.Drawing.Size(689, 168);
             this.Controls.Add(this.nextButton);
             this.Controls.Add(this.userAnswerTextBox);
             this.Controls.Add(this.quetionTextLabel);
             this.Controls.Add(this.quetionNumberLabel);
-            this.Name = "Form1";
-            this.Text = "Form1";
+            this.Name = "MainForm";
+            this.Text = "Гений Идиот";
+            this.Load += new System.EventHandler(this.Form1_Load);
+            this.Enter += new System.EventHandler(this.nextButton_Click);
             this.ResumeLayout(false);
             this.PerformLayout();
 
