@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace GeniyIdiotConsoleApp
+namespace GeniyIdiotCommonClassLibrary
 {
     public class UserResultsStoreage
     {

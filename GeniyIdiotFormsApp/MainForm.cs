@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
-using GeniyIdiotConsoleApp;
+using GeniyIdiotCommonClassLibrary;
 
 namespace GeniyIdiotFormsApp
 {
@@ -11,6 +11,7 @@ namespace GeniyIdiotFormsApp
         private Question rightQuestion;
         private int countQuestions;
         private User user = new User("Неизвестно");
+        private int questionNumber = 1;
 
         public MainForm()
         {
@@ -31,6 +32,7 @@ namespace GeniyIdiotFormsApp
             int randomQuestionIndex = random.Next(0, questions.Count);
             rightQuestion = questions[randomQuestionIndex];
             quetionTextLabel.Text = rightQuestion.Text;
+            quetionNumberLabel.Text = $"Вопрос №{questionNumber}";
         }
 
         private void nextButton_Click(object sender, EventArgs e)
@@ -51,6 +53,7 @@ namespace GeniyIdiotFormsApp
                 MessageBox.Show($"{user.Name}, количество правильных ответов: {user.CounRightAnswers}. Ваш диагноз: {user.Diagnose}");
                 return;
             }
+            questionNumber++;
             ShowNextQuestion();
         }
     }

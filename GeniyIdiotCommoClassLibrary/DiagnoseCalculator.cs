@@ -1,6 +1,6 @@
 ﻿
 
-namespace GeniyIdiotConsoleApp
+namespace GeniyIdiotCommonClassLibrary
 {
     public class DiagnoseCalculator
     {

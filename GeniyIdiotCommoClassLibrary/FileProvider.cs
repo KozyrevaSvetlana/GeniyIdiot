@@ -1,7 +1,7 @@
 ﻿using System.IO;
 using System.Text;
 
-namespace GeniyIdiotConsoleApp
+namespace GeniyIdiotCommonClassLibrary
 {
     public class FileProvider
     {

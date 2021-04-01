@@ -4,17 +4,16 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{A67A83F2-0462-45A5-966C-85154F1F64F5}</ProjectGuid>
-    <OutputType>Exe</OutputType>
-    <RootNamespace>GeniyIdiotConsoleApp</RootNamespace>
-    <AssemblyName>GeniyIdiotConsoleApp</AssemblyName>
+    <ProjectGuid>{DC425B41-4705-4D7A-8FAB-93F8E268A5CC}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>GeniyIdiotCommoClassLibrary</RootNamespace>
+    <AssemblyName>GeniyIdiotCommoClassLibrary</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
-    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <Deterministic>true</Deterministic>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
@@ -24,7 +23,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
@@ -43,17 +41,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Program.cs" />
+    <Compile Include="DiagnoseCalculator.cs" />
+    <Compile Include="FileProvider.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="App.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\GeniyIdiotCommoClassLibrary\GeniyIdiotCommonClassLibrary.csproj">
-      <Project>{dc425b41-4705-4d7a-8fab-93f8e268a5cc}</Project>
-      <Name>GeniyIdiotCommonClassLibrary</Name>
-    </ProjectReference>
+    <Compile Include="Question.cs" />
+    <Compile Include="QuestionsStoreage.cs" />
+    <Compile Include="User.cs" />
+    <Compile Include="UserResultsStoreage.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
