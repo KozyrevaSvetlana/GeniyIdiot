@@ -1,31 +1,34 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 
 namespace GeniyIdiotCommonClassLibrary
 {
     public class UserResultsStoreage
     {
-        public static string Path = "UserResults.txt";
+        public static string Path = "UserResults.json";
         public static void Append(User user)
         {
-            var formattedData = user.Name + "$" + user.CounRightAnswers + "$" + user.Diagnose;
-            FileProvider.Append(Path, formattedData);
+            var usersResults = GetAll();
+            usersResults.Add(user);
+            Save(usersResults);
         }
 
         public static List<User> GetAll()
         {
-            var fileData = FileProvider.Get(Path);
-            var lines = fileData.Split(new string[] { "\r\n" }, StringSplitOptions.RemoveEmptyEntries);
-            List<User> users = new List<User>();
-            foreach (var line in lines)
+            if (!FileProvider.Exists(Path))
             {
-                var data = line.Split('$');
-                var user = new User(data[0]);
-                user.CounRightAnswers = Convert.ToInt32(data[1]);
-                user.Diagnose= data[2];
-                users.Add(user);
+                return new List<User>();
             }
-            return users;
+            var fileData = FileProvider.Get(Path);
+            var userResults = JsonConvert.DeserializeObject<List<User>>(fileData);
+            return userResults;
+        }
+
+        static void Save(List<User> usersResults)
+        {
+            var jsonData = JsonConvert.SerializeObject(usersResults, Formatting.Indented);
+            FileProvider.Replace(Path, jsonData);
         }
     }
 }
