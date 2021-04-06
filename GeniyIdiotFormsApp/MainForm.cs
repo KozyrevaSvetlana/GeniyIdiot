@@ -1,17 +1,15 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Windows.Forms;
+using GeniyIdiotCommoClassLibrary;
 using GeniyIdiotCommonClassLibrary;
 
 namespace GeniyIdiotFormsApp
 {
     public partial class MainForm : Form
     {
-        private List<Question> questions;
-        private Question rightQuestion;
+        private Game game;
         private int countQuestions;
-        private User user = new User("Неизвестно");
-        private int questionNumber = 1;
+
 
         public MainForm()
         {
@@ -20,40 +18,31 @@ namespace GeniyIdiotFormsApp
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            questions = QuestionsStoreage.Get();
-            countQuestions = questions.Count;
+            var user = new User("Неизвестно");
+            game = new Game(user);
             ShowNextQuestion();
 
         }
 
         public void ShowNextQuestion()
         {
-            var random = new Random();
-            int randomQuestionIndex = random.Next(0, questions.Count);
-            rightQuestion = questions[randomQuestionIndex];
+            var rightQuestion = game.PopRandomQuestion();
             quetionTextLabel.Text = rightQuestion.Text;
-            quetionNumberLabel.Text = $"Вопрос №{questionNumber}";
+            quetionNumberLabel.Text = game.GetNumberQuestion();
         }
 
         private void nextButton_Click(object sender, EventArgs e)
         {
             var userAnswer = Convert.ToInt32(userAnswerTextBox.Text);
-            int rightAnswer = rightQuestion.Answer;
-            if (userAnswer == rightAnswer)
-            {
-                user.AcceptRightAnswer();
-            }
-            questions.Remove(rightQuestion);
+            game.AcceptAwswer(userAnswer);
             userAnswerTextBox.Clear();
             userAnswerTextBox.Focus();
-            var endGame = questions.Count == 0;
-            if (endGame)
+            if (game.End())
             {
-                DiagnoseCalculator.Calculate(user, countQuestions);
-                MessageBox.Show($"{user.Name}, количество правильных ответов: {user.CounRightAnswers}. Ваш диагноз: {user.Diagnose}");
+                var diagnose = game.CalculateDiagnose();
+                MessageBox.Show(diagnose);
                 return;
             }
-            questionNumber++;
             ShowNextQuestion();
         }
     }

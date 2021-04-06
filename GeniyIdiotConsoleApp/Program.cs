@@ -1,4 +1,5 @@
-﻿using System;
+﻿using GeniyIdiotCommoClassLibrary;
+using System;
 using System.Collections.Generic;
 
 namespace GeniyIdiotCommonClassLibrary
@@ -15,25 +16,16 @@ namespace GeniyIdiotCommonClassLibrary
                 userInput = Console.ReadLine();
             }
             var user = new User(userInput);
-            var questions = QuestionsStoreage.Get();
-            var countQuestions = questions.Count;
-            var random = new Random();
-            for (int i = 0; i < countQuestions; i++)
+            var game = new Game(user);
+            while (!game.End())
             {
-                int randomQuestionIndex = random.Next(0, questions.Count);
-                Console.WriteLine($"Вопрос №{i + 1}.");
-                Console.WriteLine(questions[randomQuestionIndex].Text);
+                var rightQuestion = game.PopRandomQuestion();
+                Console.WriteLine(game.GetNumberQuestion());
+                Console.WriteLine(rightQuestion.Text);
                 int userAnswer = GetUserAnswer();
-                int rightAnswer = questions[randomQuestionIndex].Answer;
-                if (userAnswer == rightAnswer)
-                {
-                    user.AcceptRightAnswer();
-                }
-                questions.RemoveAt(randomQuestionIndex);
+                game.AcceptAwswer(userAnswer);
             }
-            DiagnoseCalculator.Calculate(user, countQuestions);
-            Console.WriteLine($"Количество правильных ответов: {user.CounRightAnswers}");
-            Console.WriteLine($"Ваш диагноз: {user.Diagnose}");
+            Console.WriteLine(game.CalculateDiagnose());
             UserResultsStoreage.Append(user);
             Console.WriteLine("Хотите посмотреть предыдущие результаты?Введите да или нет");
             var input = Console.ReadLine().ToLower().Trim();
