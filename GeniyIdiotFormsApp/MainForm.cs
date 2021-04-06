@@ -41,6 +41,8 @@ namespace GeniyIdiotFormsApp
             {
                 var diagnose = game.CalculateDiagnose();
                 MessageBox.Show(diagnose);
+                userAnswerTextBox.Enabled = false;
+                nextButton.Enabled = false;
                 return;
             }
             ShowNextQuestion();
