@@ -9,6 +9,7 @@ namespace GeniyIdiotFormsApp
     {
         private Game game;
         private User user;
+        public bool okUserName;
 
         public MainForm()
         {
@@ -19,13 +20,15 @@ namespace GeniyIdiotFormsApp
         {
             user = new User("Неизвестно");
             var userInfoForm = new UserInfoForm(user);
+
             var result = userInfoForm.ShowDialog(this);
-            while (result == DialogResult.Cancel)
+            while (result != DialogResult.OK)
             {
                 var resultUser = MessageBox.Show("Вы действительно хотите выйти?", "Exit", MessageBoxButtons.YesNo);
                 if (resultUser == DialogResult.Yes)
                 {
                     Application.Exit();
+                    break;
                 }
                 else
                 {
