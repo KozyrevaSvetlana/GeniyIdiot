@@ -19,6 +19,9 @@ namespace GeniyIdiotFormsApp
         private void Form1_Load(object sender, EventArgs e)
         {
             var user = new User("Неизвестно");
+            var userInfoForm = new UserInfoForm(user);
+            userInfoForm.ShowDialog(this);
+
             game = new Game(user);
             ShowNextQuestion();
 
