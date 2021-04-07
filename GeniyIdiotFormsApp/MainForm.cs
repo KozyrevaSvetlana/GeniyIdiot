@@ -8,8 +8,6 @@ namespace GeniyIdiotFormsApp
     public partial class MainForm : Form
     {
         private Game game;
-        private int countQuestions;
-
 
         public MainForm()
         {
@@ -20,11 +18,21 @@ namespace GeniyIdiotFormsApp
         {
             var user = new User("Неизвестно");
             var userInfoForm = new UserInfoForm(user);
-            userInfoForm.ShowDialog(this);
-
+            var result = userInfoForm.ShowDialog(this);
+            while (result != DialogResult.OK)
+            {
+                var resultUser = MessageBox.Show("Вы действительно хотите выйти?", "Exit", MessageBoxButtons.YesNo);
+                if (resultUser == DialogResult.OK)
+                {
+                    Application.Exit();
+                }
+                else
+                {
+                    result = userInfoForm.ShowDialog(this);
+                }
+            }
             game = new Game(user);
             ShowNextQuestion();
-
         }
 
         public void ShowNextQuestion()

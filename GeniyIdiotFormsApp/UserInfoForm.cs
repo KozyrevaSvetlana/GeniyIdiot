@@ -29,5 +29,10 @@ namespace GeniyIdiotFormsApp
             user.Name = inputTextBox.Text;
             Close();
         }
+
+        private void UserInfoForm_Load(object sender, System.EventArgs e)
+        {
+
+        }
     }
 }
