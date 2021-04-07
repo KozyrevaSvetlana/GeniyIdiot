@@ -1,11 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using GeniyIdiotCommonClassLibrary;
+using System;
 using System.Windows.Forms;
 
 namespace GeniyIdiotFormsApp
@@ -19,7 +13,11 @@ namespace GeniyIdiotFormsApp
 
         private void UserResultsForm_Load(object sender, EventArgs e)
         {
-            //54 минуты 5 вебинар
+            var results = UserResultsStoreage.GetAll();
+            foreach (var result in results)
+            {
+                resultsDataGridView.Rows.Add(result.Name, result.CounRightAnswers, result.Diagnose);
+            }
         }
     }
 }

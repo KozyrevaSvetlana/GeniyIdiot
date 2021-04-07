@@ -7,7 +7,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GeniyIdiotConsoleApp", "Gen
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GeniyIdiotFormsApp", "GeniyIdiotFormsApp\GeniyIdiotFormsApp.csproj", "{7327ABB1-9682-4C22-8B9C-C58DC9768F27}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GeniyIdiotCommonClassLibrary", "GeniyIdiotCommoClassLibrary\GeniyIdiotCommonClassLibrary.csproj", "{DC425B41-4705-4D7A-8FAB-93F8E268A5CC}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GeniyIdiotCommoClassLibrary", "GeniyIdiotCommoClassLibrary\GeniyIdiotCommoClassLibrary.csproj", "{DC425B41-4705-4D7A-8FAB-93F8E268A5CC}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

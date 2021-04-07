@@ -50,9 +50,9 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\GeniyIdiotCommoClassLibrary\GeniyIdiotCommonClassLibrary.csproj">
+    <ProjectReference Include="..\GeniyIdiotCommoClassLibrary\GeniyIdiotCommoClassLibrary.csproj">
       <Project>{dc425b41-4705-4d7a-8fab-93f8e268a5cc}</Project>
-      <Name>GeniyIdiotCommonClassLibrary</Name>
+      <Name>GeniyIdiotCommoClassLibrary</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

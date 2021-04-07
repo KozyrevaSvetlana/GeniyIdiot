@@ -18,21 +18,23 @@ namespace GeniyIdiotFormsApp
             {
                 MessageBox.Show("Введите имя");
                 inputTextBox.Focus();
-                return;
+                Application.Restart();
             }
-            if (!User.IsValid(inputTextBox.Text))
+            else
             {
-                MessageBox.Show("Недопустимое имя. Оно должно содержать только буквы и/или цифры");
-                inputTextBox.Focus();
-                return;
+                if (!User.IsValid(inputTextBox.Text))
+                {
+                    MessageBox.Show("Недопустимое имя. Оно должно содержать только буквы и/или цифры");
+                    inputTextBox.Focus();
+                    Application.Restart();
+                }
+                else
+                {
+                    user.Name = inputTextBox.Text;
+                    Close();
+                }
             }
-            user.Name = inputTextBox.Text;
-            Close();
         }
 
-        private void UserInfoForm_Load(object sender, System.EventArgs e)
-        {
-
-        }
     }
 }

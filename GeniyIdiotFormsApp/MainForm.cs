@@ -20,10 +20,10 @@ namespace GeniyIdiotFormsApp
             user = new User("Неизвестно");
             var userInfoForm = new UserInfoForm(user);
             var result = userInfoForm.ShowDialog(this);
-            while (result != DialogResult.OK)
+            if (result != DialogResult.OK)
             {
                 var resultUser = MessageBox.Show("Вы действительно хотите выйти?", "Exit", MessageBoxButtons.YesNo);
-                if (resultUser == DialogResult.OK)
+                if (resultUser == DialogResult.Yes)
                 {
                     Application.Exit();
                 }
@@ -65,6 +65,12 @@ namespace GeniyIdiotFormsApp
         {
             if (MessageBox.Show("Вы хотите начать игру заново?", "Exit", MessageBoxButtons.YesNo) == DialogResult.Yes)
                 Application.Restart();
+        }
+
+        private void статистикаToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var resultsForm = new UserResultsForm();
+            resultsForm.ShowDialog(this);
         }
 
         private void выходToolStripMenuItem_Click(object sender, EventArgs e)
