@@ -8,6 +8,7 @@ namespace GeniyIdiotFormsApp
     public partial class MainForm : Form
     {
         private Game game;
+        private User user;
 
         public MainForm()
         {
@@ -16,7 +17,7 @@ namespace GeniyIdiotFormsApp
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            var user = new User("Неизвестно");
+            user = new User("Неизвестно");
             var userInfoForm = new UserInfoForm(user);
             var result = userInfoForm.ShowDialog(this);
             while (result != DialogResult.OK)
@@ -52,11 +53,24 @@ namespace GeniyIdiotFormsApp
             {
                 var diagnose = game.CalculateDiagnose();
                 MessageBox.Show(diagnose);
+                UserResultsStoreage.Append(user);
                 userAnswerTextBox.Enabled = false;
                 nextButton.Enabled = false;
                 return;
             }
             ShowNextQuestion();
+        }
+
+        private void рестартToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (MessageBox.Show("Вы хотите начать игру заново?", "Exit", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                Application.Restart();
+        }
+
+        private void выходToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (MessageBox.Show("Вы действительно хотите выйти из игры?", "Exit", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                Application.Exit();
         }
     }
 }
