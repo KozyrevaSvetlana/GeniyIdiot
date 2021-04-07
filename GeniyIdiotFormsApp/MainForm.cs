@@ -20,7 +20,7 @@ namespace GeniyIdiotFormsApp
             user = new User("Неизвестно");
             var userInfoForm = new UserInfoForm(user);
             var result = userInfoForm.ShowDialog(this);
-            if (result != DialogResult.OK)
+            while (result == DialogResult.Cancel)
             {
                 var resultUser = MessageBox.Show("Вы действительно хотите выйти?", "Exit", MessageBoxButtons.YesNo);
                 if (resultUser == DialogResult.Yes)

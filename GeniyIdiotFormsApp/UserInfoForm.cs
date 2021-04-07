@@ -18,7 +18,7 @@ namespace GeniyIdiotFormsApp
             {
                 MessageBox.Show("Введите имя");
                 inputTextBox.Focus();
-                Application.Restart();
+                return;
             }
             else
             {
@@ -26,7 +26,7 @@ namespace GeniyIdiotFormsApp
                 {
                     MessageBox.Show("Недопустимое имя. Оно должно содержать только буквы и/или цифры");
                     inputTextBox.Focus();
-                    Application.Restart();
+                    return;
                 }
                 else
                 {
