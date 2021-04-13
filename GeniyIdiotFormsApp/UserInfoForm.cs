@@ -1,4 +1,5 @@
 ﻿using GeniyIdiotCommonClassLibrary;
+using System.Text.RegularExpressions;
 using System.Windows.Forms;
 
 namespace GeniyIdiotFormsApp
@@ -10,6 +11,7 @@ namespace GeniyIdiotFormsApp
         {
             InitializeComponent();
             this.user = user;
+
         }
 
         private void okButton_Click(object sender, System.EventArgs e)
@@ -17,20 +19,22 @@ namespace GeniyIdiotFormsApp
             if (inputTextBox.Text == string.Empty)
             {
                 MessageBox.Show("Введите имя");
-                Application.Restart();
+                user.Name = string.Empty;
             }
             else
             {
-                if (!User.IsValid(inputTextBox.Text))
-                {
-                    MessageBox.Show("Недопустимое имя. Оно должно содержать только буквы и/или цифры");
-                    Application.Restart();
-                }
-                else
-                {
                     user.Name = inputTextBox.Text;
                     Close();
-                }
+            }
+        }
+
+        private void inputTextBox_TextChanged(object sender, System.EventArgs e)
+        {
+            if (Regex.IsMatch(inputTextBox.Text, "[^0-9a-zA-Zа-яА-Я]"))
+            {
+                MessageBox.Show("Недопустимое имя. Оно должно содержать только буквы и/или цифры");
+                inputTextBox.Text = inputTextBox.Text.Remove(inputTextBox.Text.Length - 1);
+                inputTextBox.SelectionStart = inputTextBox.Text.Length;
             }
         }
     }

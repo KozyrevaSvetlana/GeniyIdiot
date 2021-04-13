@@ -20,7 +20,6 @@ namespace GeniyIdiotFormsApp
         {
             user = new User("Неизвестно");
             var userInfoForm = new UserInfoForm(user);
-
             var result = userInfoForm.ShowDialog(this);
             while (result != DialogResult.OK)
             {
@@ -35,8 +34,13 @@ namespace GeniyIdiotFormsApp
                     result = userInfoForm.ShowDialog(this);
                 }
             }
+            while (user.Name == string.Empty)
+            {
+                result = userInfoForm.ShowDialog(this);
+            }
             game = new Game(user);
             ShowNextQuestion();
+
         }
 
         public void ShowNextQuestion()
@@ -48,7 +52,7 @@ namespace GeniyIdiotFormsApp
 
         private void nextButton_Click(object sender, EventArgs e)
         {
-            var userAnswer = Convert.ToInt32(userAnswerTextBox.Text);
+            var userAnswer = GetUserAnswer(userAnswerTextBox.Text);
             game.AcceptAwswer(userAnswer);
             userAnswerTextBox.Clear();
             userAnswerTextBox.Focus();
@@ -80,6 +84,25 @@ namespace GeniyIdiotFormsApp
         {
             if (MessageBox.Show("Вы действительно хотите выйти из игры?", "Exit", MessageBoxButtons.YesNo) == DialogResult.Yes)
                 Application.Exit();
+        }
+
+        private static int GetUserAnswer(string userAnswer)
+        {
+            while (true)
+            {
+                try
+                {
+                    return Convert.ToInt32(userAnswer);
+                }
+                catch (FormatException)
+                {
+                    MessageBox.Show("Введите число");
+                }
+                catch (OverflowException)
+                {
+                    MessageBox.Show("Введите число до 10^9");
+                }
+            }
         }
     }
 }

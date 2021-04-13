@@ -49,6 +49,7 @@
             this.inputTextBox.Name = "inputTextBox";
             this.inputTextBox.Size = new System.Drawing.Size(381, 20);
             this.inputTextBox.TabIndex = 1;
+            this.inputTextBox.TextChanged += new System.EventHandler(this.inputTextBox_TextChanged);
             // 
             // okButton
             // 
