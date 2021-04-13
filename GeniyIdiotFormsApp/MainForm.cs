@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Text.RegularExpressions;
 using System.Windows.Forms;
 using GeniyIdiotCommoClassLibrary;
 using GeniyIdiotCommonClassLibrary;
@@ -102,6 +103,16 @@ namespace GeniyIdiotFormsApp
                 {
                     MessageBox.Show("Введите число до 10^9");
                 }
+            }
+        }
+
+        private void userAnswerTextBox_TextChanged(object sender, EventArgs e)
+        {
+            if (Regex.IsMatch(userAnswerTextBox.Text, "[^0-9]"))
+            {
+                MessageBox.Show("Введите только цифры");
+                userAnswerTextBox.Text = userAnswerTextBox.Text.Remove(userAnswerTextBox.Text.Length - 1);
+                userAnswerTextBox.SelectionStart = userAnswerTextBox.Text.Length;
             }
         }
     }
