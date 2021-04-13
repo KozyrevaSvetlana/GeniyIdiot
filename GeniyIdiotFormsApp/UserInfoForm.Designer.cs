@@ -71,8 +71,10 @@
             this.Controls.Add(this.okButton);
             this.Controls.Add(this.inputTextBox);
             this.Controls.Add(this.label1);
+            this.KeyPreview = true;
             this.Name = "UserInfoForm";
             this.Text = "UserInfoForm";
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.UserInfoForm_KeyDown);
             this.ResumeLayout(false);
             this.PerformLayout();
 

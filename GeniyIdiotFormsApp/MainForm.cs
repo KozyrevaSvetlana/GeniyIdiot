@@ -115,5 +115,13 @@ namespace GeniyIdiotFormsApp
                 userAnswerTextBox.SelectionStart = userAnswerTextBox.Text.Length;
             }
         }
+
+        private void MainForm_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyValue==(char)Keys.Enter)
+            {
+                nextButton.PerformClick();
+            }
+        }
     }
 }
